@@ -41,6 +41,95 @@
       }
     }
 
+    /* Salju */
+    .snowflake {
+      position: fixed;
+      top: -190px;
+      color: white;
+      font-size: 2rem;
+      pointer-events: none;
+      z-index: 9999;
+      animation: fall 10s linear infinite;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh);
+      }
+    }
+
+    /* Lampu Natal */
+    .christmas-lights {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .light {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: red;
+      animation: blink 1.5s infinite alternate;
+    }
+
+    .light:nth-child(1) {
+      background-color: red;
+      animation-delay: 0s;
+    }
+
+    .light:nth-child(2) {
+      background-color: green;
+      animation-delay: 0.3s;
+    }
+
+    .light:nth-child(3) {
+      background-color: yellow;
+      animation-delay: 0.6s;
+    }
+
+    .light:nth-child(4) {
+      background-color: blue;
+      animation-delay: 0.9s;
+    }
+
+    @keyframes blink {
+      0% {
+        opacity: 0.5;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    /* Kembang Api */
+    .firework {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #ff6600;
+      animation: explode 1.5s infinite;
+    }
+
+    @keyframes explode {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(3);
+        opacity: 0.5;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 0;
+      }
+    }
+
     /* Container */
     .container {
       display: flex;
@@ -93,7 +182,7 @@
       margin-bottom: 20px;
     }
 
-    /* Email Button */
+    /* MAIN WEB Button */
     .email-button {
       background-color: #ff6600;
       color: white;
@@ -121,11 +210,11 @@
       color: #fff;
       cursor: pointer;
       text-decoration: none;
-      font-size: 1.8rem;
+      font-size: 2rem;
     }
 
     .icon:hover {
-      color: #ff6600;
+      color: #45a049;
     }
 
     /* Minecraft Button */
@@ -150,7 +239,7 @@
       margin-top: 20px;
       text-align: center;
       color: #a3a3a3;
-      font-size: 0.9rem;
+      font-size: 1rem;
       width: 100%;
     }
 
@@ -162,6 +251,13 @@
     footer a:hover {
       text-decoration: underline;
     }
+
+    /* New Icon 💠 Positioning */
+    .new-icon {
+      display: block;  /* Make sure it is a block-level element */
+      text-align: center;
+      margin-top: 10px; /* Add margin-top to create space between Minecraft icon and 💠 */
+    }
   </style>
 </head>
 <body>
@@ -172,32 +268,33 @@
       <p class="subtitle">Game Developer</p>
       <p class="status">I Am Good</p>
       
-      <!-- Email Button with mailto link -->
-      <a href="mailto:zanix603@gmail.com" class="email-button">Email</a>
+      <!-- MAIN WEB Button -->
+      <a href="https://zanix.online" class="email-button">MAIN WEB</a>
 
       <!-- Icons -->
       <div class="icons">
         <!-- Icon Globe Left -->
-        <a href="#" class="icon" onclick="confirmNavigation('https://zanix.my.id')">🌐</a>
+        <a href="#" class="icon" onclick="confirmNavigation('https://my.zanix.my.id')">🌐</a>
         
         <!-- Icon Minecraft (with Image) -->
         <span class="minecraft-button icon" onclick="confirmMinecraftServer()">
           <img src="https://minecraft.wiki/images/Bedrock_Edition_Google_Play_icon_2.png?22dac&format=original" alt="Minecraft" style="width: 30px; height: 30px; vertical-align: middle;">
         </span>
-        
+
         <!-- Icon Globe Right -->
-        <a href="#" class="icon" onclick="confirmNavigation('https://936.my.id')">🌐</a>
+        <a href="#" class="icon" onclick="confirmNavigation('https://my.936.my.id')">🌐</a>
       </div>
+
+      <!-- New Icon 💠 Below Minecraft -->
+      <a href="#" class="icon new-icon" onclick="confirmNavigation('https://m.zanix.online')">💠</a>
     </div>
-    
+
     <!-- Footer with Copyright -->
     <footer>
-      <p>&copy; <span id="current-year"></span> <a href="https://zanix.online" target="_blank">Zanix</a>. All Rights Reserved.</p>
+      <p>&copy; <span id="current-year"></span> <a href="https://m.zanix.online" target="_blank">ZANIX | Free to Use, </a><a href="https://m.zanix.online" target="_blank">Credit to Zanix | </a>. <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0 License</a></p>
     </footer>
   </div>
 
-  <!-- Falling Particles Effect (Removed) -->
-  
   <!-- Confirm Navigation and Minecraft Server -->
   <script>
     // Function for Confirm Navigation (Globe Icons)
@@ -210,12 +307,50 @@
     // Function for Confirm Minecraft Server Addition (Minecraft Icon)
     function confirmMinecraftServer() {
       if (confirm("Are you sure you want to add this server to Minecraft?")) {
-        window.location.href = "minecraft://?addExternalServer=ZanixServer|play.zanix.online:19132";
+        window.location.href = "minecraft://?addExternalServer=Zanix%20Server";
       }
     }
 
     // Set the current year in the footer
     document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    // Snowflakes function
+    function createSnowflakes() {
+      const numberOfSnowflakes = 25;
+      const snowContainer = document.body;
+
+      for (let i = 0; i < numberOfSnowflakes; i++) {
+        const snowflake = document.createElement('div');
+        snowflake.classList.add('snowflake');
+        snowflake.textContent = ' ❄️ '; // Snow symbol
+
+        snowflake.style.left = `${Math.random() * 100}vw`;
+        snowflake.style.animationDuration = `${Math.random() * 5 + 5}s`;
+        snowflake.style.animationDelay = `${Math.random() * 10}s`;
+        snowflake.style.fontSize = `${Math.random() * 1.5 + 1}rem`;
+
+        snowContainer.appendChild(snowflake);
+      }
+    }
+
+    // Fireworks function
+    function createFireworks() {
+      const firework = document.createElement('div');
+      firework.classList.add('firework');
+
+      firework.style.top = `${Math.random() * 100}vh`;
+      firework.style.left = `${Math.random() * 100}vw`;
+
+      document.body.appendChild(firework);
+
+      setTimeout(() => firework.remove(), 1500);
+    }
+
+    // Start effects
+    window.onload = () => {
+      createSnowflakes();
+      setInterval(createFireworks, 2000);
+    };
   </script>
 </body>
 </html>
