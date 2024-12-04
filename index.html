@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Card</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Body Style */
+    body {
+      background: linear-gradient(45deg, #ff6600, #ff33cc, #33ccff, #ff3300, #00ff66);
+      background-size: 400% 400%;
+      animation: gradientBackground 5s ease infinite;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Background Gradient Animation */
+    @keyframes gradientBackground {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    /* Container */
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      padding: 20px;
+      flex-direction: column;
+      z-index: 2;
+    }
+
+    /* Card */
+    .card {
+      background-color: #1a1a1a;
+      border-radius: 15px;
+      text-align: center;
+      padding: 20px;
+      max-width: 300px;
+      width: 100%;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+      z-index: 2;
+    }
+
+    /* Profile Picture */
+    .profile-pic {
+      background: url('SQlIGSukavZVFFfS1H1SUSK6gkOLUe5uRZQZnNO20TJ30c2TA.jpg') no-repeat center/cover;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+    }
+
+    /* Title */
+    .title {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    /* Subtitle */
+    .subtitle {
+      font-size: 1rem;
+      color: #a3a3a3;
+      margin-bottom: 10px;
+    }
+
+    /* Status */
+    .status {
+      font-size: 0.9rem;
+      color: #f39c12;
+      margin-bottom: 20px;
+    }
+
+    /* Email Button */
+    .email-button {
+      background-color: #ff6600;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      padding: 10px 20px;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+
+    .email-button:hover {
+      background-color: #ff8533;
+    }
+
+    /* Icons */
+    .icons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .icon {
+      color: #fff;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 1.8rem;
+    }
+
+    .icon:hover {
+      color: #ff6600;
+    }
+
+    /* Minecraft Button */
+    .minecraft-button {
+      background-color: transparent;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      padding: 10px 20px;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 1rem;
+      margin: 0;
+    }
+
+    .minecraft-button:hover {
+      background-color: #45a049;
+    }
+
+    /* Footer Style */
+    footer {
+      margin-top: 20px;
+      text-align: center;
+      color: #a3a3a3;
+      font-size: 0.9rem;
+      width: 100%;
+    }
+
+    footer a {
+      color: #ff6600;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="profile-pic"></div>
+      <h1 class="title">Zanix Qhove</h1>
+      <p class="subtitle">Game Developer</p>
+      <p class="status">I Am Good</p>
+      
+      <!-- Email Button with mailto link -->
+      <a href="mailto:zanix603@gmail.com" class="email-button">Email</a>
+
+      <!-- Icons -->
+      <div class="icons">
+        <!-- Icon Globe Left -->
+        <a href="#" class="icon" onclick="confirmNavigation('https://zanix.my.id')">🌐</a>
+        
+        <!-- Icon Minecraft (with Image) -->
+        <span class="minecraft-button icon" onclick="confirmMinecraftServer()">
+          <img src="https://minecraft.wiki/images/Bedrock_Edition_Google_Play_icon_2.png?22dac&format=original" alt="Minecraft" style="width: 30px; height: 30px; vertical-align: middle;">
+        </span>
+        
+        <!-- Icon Globe Right -->
+        <a href="#" class="icon" onclick="confirmNavigation('https://936.my.id')">🌐</a>
+      </div>
+    </div>
+    
+    <!-- Footer with Copyright -->
+    <footer>
+      <p>&copy; <span id="current-year"></span> <a href="https://zanix.online" target="_blank">Zanix</a>. All Rights Reserved.</p>
+    </footer>
+  </div>
+
+  <!-- Falling Particles Effect (Removed) -->
+  
+  <!-- Confirm Navigation and Minecraft Server -->
+  <script>
+    // Function for Confirm Navigation (Globe Icons)
+    function confirmNavigation(url) {
+      if (confirm("Are you sure you want to visit this website?")) {
+        window.location.href = url;
+      }
+    }
+
+    // Function for Confirm Minecraft Server Addition (Minecraft Icon)
+    function confirmMinecraftServer() {
+      if (confirm("Are you sure you want to add this server to Minecraft?")) {
+        window.location.href = "minecraft://?addExternalServer=ZanixServer|play.zanix.online:19132";
+      }
+    }
+
+    // Set the current year in the footer
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
